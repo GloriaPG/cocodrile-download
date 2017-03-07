@@ -1,9 +1,21 @@
+import os
 import urllib2
+from shutil import copyfile
 
-source_plugin = "http://sf-c01.sentinel.la:5580/plugins/download/"
+"""
+Dowload plugin
+"""
+# URL to download plugin.
+source_plugin = "http://sf-c01.sentinel.la:5580/plugins/download/" 
+
+# Name plugin wiht version
 name_plugin = "test2-1.4"
+
+# Extension file
 extension = "zip"
+
 url = source_plugin + name_plugin + "." + extension
+
 
 file_name = url.split('/')[-1]
 u = urllib2.urlopen(url)
@@ -26,3 +38,14 @@ while True:
     print status,
 
 f.close()
+
+
+"""
+Copy file to Sentinella
+"""
+copyfile("{0}.{1}".format(name_plugin, extension), "../{0}.{1}".format(name_plugin,extension))
+
+"""
+Remove file to this directory
+"""
+os.remove("{0}.{1}".format(name_plugin, extension))
