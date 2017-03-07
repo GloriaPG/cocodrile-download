@@ -1,9 +1,10 @@
 import os
 import urllib2
 from shutil import copyfile
+import zipfile
 
 """
-Dowload plugin
+ 1.- Dowload plugin
 """
 # URL to download plugin.
 source_plugin = "http://sf-c01.sentinel.la:5580/plugins/download/" 
@@ -41,11 +42,22 @@ f.close()
 
 
 """
-Copy file to Sentinella
+ 2.- Copy file to Sentinella
 """
 copyfile("{0}.{1}".format(name_plugin, extension), "../{0}.{1}".format(name_plugin,extension))
 
+
+
 """
-Remove file to this directory
+ 3.- Remove file to this directory
 """
 os.remove("{0}.{1}".format(name_plugin, extension))
+
+
+
+"""
+ 4.- Unzip plugin in Sentinella
+"""
+zip_ref = zipfile.ZipFile("../{0}.{1}".format(name_plugin,extension), 'r')
+zip_ref.extractall("../")
+zip_ref.close()
