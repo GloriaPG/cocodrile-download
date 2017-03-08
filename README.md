@@ -10,3 +10,9 @@ Is a example file manipulation with python.
 * 2.- Copy file.
 * 3.- Remove file.
 * 4.- Copy file into folder.
+
+# Execute
+
+```{r, engine='bash', count_lines}
+$ python cocodrile.py
+```
