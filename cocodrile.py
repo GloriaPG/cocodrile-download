@@ -10,12 +10,16 @@ import zipfile
 source_plugin = "http://sf-c01.sentinel.la:5580/plugins/download/" 
 
 # Name plugin wiht version
-name_plugin = "test2-1.4"
+name_plugin = "test"
 
 # Extension file
 extension = "zip"
 
-url = source_plugin + name_plugin + "." + extension
+#Version 
+version = "3.5"
+
+file_plugin = name_plugin + "-" + version + "." + extension
+url = source_plugin +  file_plugin
 
 
 file_name = url.split('/')[-1]
@@ -44,20 +48,26 @@ f.close()
 """
  2.- Copy file to Sentinella
 """
-copyfile("{0}.{1}".format(name_plugin, extension), "../{0}.{1}".format(name_plugin,extension))
-
+copyfile("{0}".format(file_plugin), "../{0}".format(file_plugin))
 
 
 """
  3.- Remove file to this directory
 """
-os.remove("{0}.{1}".format(name_plugin, extension))
+os.remove(file_plugin)
 
 
 
 """
  4.- Unzip plugin in Sentinella
 """
-zip_ref = zipfile.ZipFile("../{0}.{1}".format(name_plugin,extension), 'r')
+zip_ref = zipfile.ZipFile("../{0}".format(file_plugin), 'r')
 zip_ref.extractall("../")
 zip_ref.close()
+
+
+"""
+ 5.- Copy .conf file plugin to /etc/sentinella/conf.d/
+"""
+file_conf = "{0}.conf".format(name_plugin)
+copyfile("../{}/conf/{}".format(name_plugin,file_conf), "/etc/sentinella/conf.d/{}".format(file_conf))
