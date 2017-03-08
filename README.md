@@ -5,7 +5,7 @@
 
 # Song
 -----
-[![Krockadile - King Krule](https://i.ytimg.com/vi/MAGlUctAtOg/hqdefault.jpg)](https://www.youtube.com/watch?v=Z3zkmiCG7WE)
+[Krockadile - King Krule](https://www.youtube.com/watch?v=Z3zkmiCG7WE)
 
 # What is Cocodrile Download?
 Is a example file manipulation with python.
